@@ -7,6 +7,8 @@
 
 .main {
   height: 100vh;
+  max-width: 1024px;
+  margin: 0 auto;
 
   .navigation {
     z-index: 99;
@@ -14,7 +16,6 @@
     max-width: 1024px;
     width: 100%;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.6);
-    margin: 0 auto;
   }
 
   .container {
@@ -36,6 +37,7 @@
     .right {
       i {
         font-size: 20px;
+        cursor: pointer;
       }
       i:nth-child(2), i:nth-child(3) {
         margin-left: 16px;
@@ -44,6 +46,18 @@
 
     span {
       font-weight: 600;
+    }
+  }
+
+  .grid {
+    display: grid;
+    padding-top: 81px;
+    background-color: #31363d;
+    width: 100%;
+    height: 100vh;
+
+    @media(max-width: 400px){
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
