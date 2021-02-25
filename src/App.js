@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import './App.css';
+import './App.scss';
+
+import Navigation from './Components/Navigation';
 
 function App() {
 
@@ -15,8 +17,8 @@ function App() {
   },[]);
 
   return (
-    <div className="App">
-      Test
+    <div className="main">
+      <Navigation />
     </div>
   );
 }
