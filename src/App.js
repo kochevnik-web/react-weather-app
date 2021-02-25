@@ -9,12 +9,12 @@ import Grid from './Components/Grid';
 function App() {
 
   const APIkey = '05a79166788046d12b7289b781dc5645';
-  const [cites, setSites] = useState(['London', 'Moscow', 'Erevan']);
+  const [cites, setSites] = useState(['London', 'Moscow', 'Erevan', 'Далас', 'Остин']);
   const [data, setData] = useState([]);
 
   useEffect(()=>{
     let dataCity = cites.map(el => {
-        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${el}&appid=${APIkey}`)
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${el}&appid=${APIkey}&units=metric`)
     });
     axios.all(dataCity).then(response => {
       console.log(response);
