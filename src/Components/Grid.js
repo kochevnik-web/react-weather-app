@@ -6,7 +6,7 @@ export default function Grid({data}) {
     const sitesElements = data.map((el, idx) =>{
         return (
             <div key={idx} className="city-link">
-                <City data={el.data} />
+                <City data={el} />
             </div>
         )
     })

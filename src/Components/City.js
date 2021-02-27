@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ({data}) {
+export default function City({data}) {
     return (
         <div className="city">
             <span>{data.name}</span>
@@ -8,7 +8,7 @@ export default function ({data}) {
                 <span>
                     {Math.round(data.main.temp)}&deg;
                 </span>
-                <img src={process.env.PUBLIC_URL + '/images/' + data.weather[0].icon + '.svg' } />
+                <img src={process.env.PUBLIC_URL + '/images/' + data.weather[0].icon + '.svg' } alt=""/>
             </div>
             <div className="video">
                 <video
