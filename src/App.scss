@@ -73,6 +73,21 @@
     color: #fff;
     box-shadow: 0 1px 2px 0 rgba(0, 0 , 0, .05);
 
+    .edit {
+      border-radius: 0 15px 0 0;
+      border: 10px solid rgb(77, 77, 77);
+      background-color: rgb(77, 77, 77);
+      z-index: 1;
+      font-size: 20px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
     span {
       z-index: 1;
       text-transform: capitalize;

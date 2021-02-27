@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 
-export default function Modal({hendlerModal, hendlerAddCity}) {
+export default function Modal({handlerModal, handlerAddCity}) {
 
     const [value, setValue] = useState('');
     const addCityName = () => {
-        hendlerAddCity(value);
+        handlerAddCity(value);
         setValue('');
-        hendlerModal();
+        handlerModal();
     }
     return (
-        <div className="modal" onClick={hendlerModal}>
+        <div className="modal" onClick={handlerModal}>
             <div className="modal-wrap" onClick={(e)=> {e.stopPropagation()}}>
                 <label htmlFor="city-name">Enter location:</label>
                 <input

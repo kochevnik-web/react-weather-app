@@ -2,11 +2,11 @@ import React from 'react';
 
 import City from './City'
 
-export default function Grid({data}) {
-    const sitesElements = data.map((el, idx) =>{
+export default function Grid({data, handleDelite, edit}) {
+    const sitesElements = data.map(el =>{
         return (
-            <div key={idx} className="city-link">
-                <City data={el} />
+            <div key={el.name} className="city-link">
+                <City data={el} handleDelite={(city) => handleDelite(city)} edit={edit}/>
             </div>
         )
     })

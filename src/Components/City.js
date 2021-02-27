@@ -1,8 +1,9 @@
 import React from 'react'
 
-export default function City({data}) {
+export default function City({data, handleDelite, edit}) {
     return (
         <div className="city">
+            {edit && <i className="far fa-trash-alt edit" onClick={() => handleDelite(data.name)}></i>}
             <span>{data.name}</span>
             <div className="weather">
                 <span>
