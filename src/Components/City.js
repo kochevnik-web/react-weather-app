@@ -5,9 +5,15 @@ export default function City({data}) {
 
     const {handleDelite, edit} = useContext(Context);
 
+    let clx = ['far', 'fa-trash-alt', 'edit'];
+
+    if(edit){
+        clx.push('show');
+    }
+
     return (
         <div className="city">
-            {edit && <i className="far fa-trash-alt edit" onClick={() => handleDelite(data.name)}></i>}
+            <i className={clx.join(' ')} onClick={() => handleDelite(data.name)}></i>
             <span>{data.name}</span>
             <div className="weather">
                 <span>
