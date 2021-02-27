@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import {Context} from '../context';
 
-export default function City({data, handleDelite, edit}) {
+export default function City({data}) {
+
+    const {handleDelite, edit} = useContext(Context);
+
     return (
         <div className="city">
             {edit && <i className="far fa-trash-alt edit" onClick={() => handleDelite(data.name)}></i>}

@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {Context} from '../context';
 
-export default function Modal({handlerModal, handlerAddCity}) {
+export default function Modal() {
+
+    const {handlerModal, handlerAddCity} = useContext(Context);
 
     const [value, setValue] = useState('');
     const addCityName = () => {

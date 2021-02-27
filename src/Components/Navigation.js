@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {Context} from '../context';
 
-export default function Navigation({handlerModal, handleEdit}) {
+export default function Navigation() {
+    const {handlerModal, handleEdit} = useContext(Context);
+
     return (
         <div className="navigation">
             <header className="container add-city">

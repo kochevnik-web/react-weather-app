@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {Context} from '../context';
 
 import City from './City'
 
-export default function Grid({data, handleDelite, edit}) {
+export default function Grid() {
+
+    const {data} = useContext(Context);
+    
     const sitesElements = data.map(el =>{
         return (
             <div key={el.name} className="city-link">
-                <City data={el} handleDelite={(city) => handleDelite(city)} edit={edit}/>
+                <City data={el} />
             </div>
         )
     })
