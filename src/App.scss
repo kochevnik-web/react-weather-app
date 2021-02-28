@@ -10,6 +10,7 @@
   max-width: 1024px;
   margin: 0 auto;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   .navigation {
     z-index: 99;
@@ -63,6 +64,12 @@
     width: 100%;
     min-height: 100vh;
     grid-auto-rows: 250px;
+    transition: transform .21s ease-out;
+    transform: translateX(0);
+
+    &.hide {
+      transform: translateX(100%);
+    }
 
     @media(min-width: 400px){
       grid-template-columns: repeat(2, 1fr);
@@ -199,6 +206,15 @@
       border-radius: 8px;
       border: none;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .single-weather {
+    transition: transform .21s ease-out;
+    transform: translateX(-100%);
+
+    &.show {
+      transform: translateX(0);
     }
   }
 }

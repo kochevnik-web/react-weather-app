@@ -9,6 +9,7 @@ export default function ContextProvider({ children }) {
     const [data, setData] = useState([]);
     const [isModal, setIsModal] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [isWeather, setIsWeather] = useState(null);
 
     const handlerAddCity = (city) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=metric`).then(res => {
@@ -50,8 +51,14 @@ export default function ContextProvider({ children }) {
         }
     }
 
+    const handleSingle = (name) => {
+        if(!edit) {
+            setIsWeather(name);
+        }
+    }
+
     return (
-        <Context.Provider value={{data, isModal, edit, handlerAddCity, handlerModal, handleDelite, handleEdit}}>
+        <Context.Provider value={{data, isModal, edit, isWeather, handlerAddCity, handlerModal, handleDelite, handleEdit, handleSingle}}>
         {children}
         </Context.Provider>
     );

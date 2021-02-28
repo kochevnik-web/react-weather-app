@@ -3,7 +3,7 @@ import {Context} from '../context';
 
 export default function City({data}) {
 
-    const {handleDelite, edit} = useContext(Context);
+    const {handleDelite, edit, handleSingle} = useContext(Context);
 
     let clx = ['far', 'fa-trash-alt', 'edit'];
 
@@ -12,7 +12,7 @@ export default function City({data}) {
     }
 
     return (
-        <div className="city">
+        <div className="city" onClick={() => handleSingle(data.name)}>
             <i className={clx.join(' ')} onClick={() => handleDelite(data.name)}></i>
             <span>{data.name}</span>
             <div className="weather">

@@ -6,6 +6,7 @@ import './App.scss';
 import Navigation from './Components/Navigation';
 import Modal from './Components/Modal';
 import Grid from './Components/Grid';
+import Weather from './Components/Weather';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       {isModal && <Modal/>}
       <Navigation/>
       <Grid/>
+      <Weather/>
     </div>
   );
 }

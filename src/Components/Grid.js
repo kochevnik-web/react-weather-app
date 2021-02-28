@@ -5,8 +5,13 @@ import City from './City'
 
 export default function Grid() {
 
-    const {data} = useContext(Context);
-    
+    const {data, isWeather} = useContext(Context);
+
+    let clx = ['grid'];
+    if(isWeather) {
+        clx.push('hide');
+    }
+
     const sitesElements = data.map(el =>{
         return (
             <div key={el.name} className="city-link">
@@ -16,7 +21,7 @@ export default function Grid() {
     })
 
     return (
-        <div className="grid">
+        <div className={clx.join(' ')}>
             {sitesElements}
         </div>
     )
