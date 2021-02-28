@@ -28,14 +28,26 @@ export default function ContextProvider({ children }) {
         setIsModal(!isModal);
     }
 
+    useEffect(() => {
+        if(data.length === 0) {
+            setEdit(false);
+        }
+    }, [data])
+
     const handleDelite = city => {
         setData(data.filter(el => {
         return el.name !== city
         }));
+
+        if(data.length === 1){
+            setIsModal(true);
+        }
     }
 
     const handleEdit = () => {
-        setEdit(!edit);
+        if(data.length > 0){
+            setEdit(!edit);
+        }
     }
 
     return (
