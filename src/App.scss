@@ -11,6 +11,7 @@
   margin: 0 auto;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 
   .navigation {
     z-index: 99;
@@ -166,6 +167,7 @@
     z-index: 101;
     position: fixed;
     display: flex;
+    max-width: 1024px;
     width: 100%;
     height: 100%;
     justify-content: center;

@@ -13,16 +13,28 @@ export default function ContextProvider({ children }) {
 
     const handlerAddCity = (city) => {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=metric`).then(res => {
-        console.log(res.data);
-        let newData = data.filter(el => {
-            return res.data.name !== el.name
+            let newData = data.filter(el => {
+                return res.data.name !== el.name
+            });
+            setData([res.data, ...newData]);
+
+            const storage = JSON.parse(localStorage.getItem('cityList')) || [];
+            localStorage.setItem('cityList', JSON.stringify([res.data,...storage]));
         });
-        setData([res.data, ...newData]);
+    }
+
+    async function syncWeather(data) {
+        const getAllItems = data.map(el =>{
+            return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${el.name}&appid=${APIkey}&units=metric`)
+        })
+        await axios.all(getAllItems).then(res => {
+            setData(res.map(el => el.data));
         });
     }
 
     useEffect(() => {
-        handlerAddCity('Сочи');
+        const storage = JSON.parse(localStorage.getItem('cityList')) || [];
+        syncWeather(storage);
     }, [])
 
     const handlerModal = () => {
@@ -37,12 +49,15 @@ export default function ContextProvider({ children }) {
 
     const handleDelite = city => {
         setData(data.filter(el => {
-        return el.name !== city
+            return el.name !== city
         }));
 
         if(data.length === 1){
             setIsModal(true);
         }
+
+        const storage = JSON.parse(localStorage.getItem('cityList')) || [];
+        localStorage.setItem('cityList', JSON.stringify(storage.filter(el => el.name !== city)));
     }
 
     const handleEdit = () => {
@@ -58,7 +73,7 @@ export default function ContextProvider({ children }) {
     }
 
     return (
-        <Context.Provider value={{data, isModal, edit, isWeather, handlerAddCity, handlerModal, handleDelite, handleEdit, handleSingle}}>
+        <Context.Provider value={{data, isModal, edit, isWeather, handlerAddCity, handlerModal, handleDelite, handleEdit, handleSingle, syncWeather}}>
         {children}
         </Context.Provider>
     );
