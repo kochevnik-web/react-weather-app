@@ -12,7 +12,7 @@ export default function City({data}) {
     }
 
     return (
-        <div className="city" onClick={() => handleSingle(data.name)}>
+        <div className="city" onClick={() => handleSingle(data)}>
             <i className={clx.join(' ')} onClick={() => handleDelite(data.name)}></i>
             <span>{data.name}</span>
             <div className="weather">

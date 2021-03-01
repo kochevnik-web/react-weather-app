@@ -2,11 +2,13 @@ import React, {useContext} from 'react'
 import {Context} from '../context';
 
 export default function Navigation() {
-    const {data, edit, handlerModal, handleEdit, isWeather, handleSingle, syncWeather} = useContext(Context);
+    const {data, edit, handlerModal, handleEdit, isWeather, handleSingle, syncWeather, nightOrDay} = useContext(Context);
+
+    let clx = ['container', 'header', nightOrDay];
 
     return (
         <div className="navigation">
-            <header className="container add-city">
+            <header className={clx.join(' ')}>
                 <nav>
                     <span>Weather App</span>
                     <div className="right">

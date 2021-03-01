@@ -9,6 +9,7 @@ export default function ContextProvider({ children }) {
     const [data, setData] = useState([]);
     const [isModal, setIsModal] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [nightOrDay, setNightOrDay] = useState(null);
     const [isWeather, setIsWeather] = useState(null);
 
     const handlerAddCity = (city) => {
@@ -66,14 +67,27 @@ export default function ContextProvider({ children }) {
         }
     }
 
-    const handleSingle = (name) => {
+    const handleSingle = (dataSingle) => {
         if(!edit) {
-            setIsWeather(name);
+            setIsWeather(dataSingle);
+            if (dataSingle) {
+                let now = new Date().getTime();
+                now = now + (dataSingle.timezone * 1000);
+                const sunrise = dataSingle.sys.sunrise * 1000;
+                const sunset = dataSingle.sys.sunset * 1000;
+                if(now > sunrise && now < sunset) {
+                    setNightOrDay('day');
+                }else{
+                    setNightOrDay('night');
+                }
+            } else {
+                setNightOrDay(null);
+            }
         }
     }
 
     return (
-        <Context.Provider value={{data, isModal, edit, isWeather, handlerAddCity, handlerModal, handleDelite, handleEdit, handleSingle, syncWeather}}>
+        <Context.Provider value={{APIkey, data, isModal, edit, isWeather, handlerAddCity, handlerModal, handleDelite, handleEdit, handleSingle, syncWeather, nightOrDay}}>
         {children}
         </Context.Provider>
     );
