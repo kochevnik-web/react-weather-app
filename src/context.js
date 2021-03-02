@@ -71,11 +71,8 @@ export default function ContextProvider({ children }) {
         if(!edit) {
             setIsWeather(dataSingle);
             if (dataSingle) {
-                let now = new Date().getTime();
-                now = now + (dataSingle.timezone * 1000);
-                const sunrise = dataSingle.sys.sunrise * 1000;
-                const sunset = dataSingle.sys.sunset * 1000;
-                if(now > sunrise && now < sunset) {
+                let icon = dataSingle.weather[0].icon;
+                if(icon.includes('d')) {
                     setNightOrDay('day');
                 }else{
                     setNightOrDay('night');

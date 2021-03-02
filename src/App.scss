@@ -9,9 +9,9 @@
   height: 100vh;
   max-width: 1024px;
   margin: 0 auto;
-  overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
+  background-color: #31363d;
 
   .navigation {
     z-index: 99;
@@ -27,16 +27,6 @@
 
   .header {
     background-color: #313640;
-  }
-
-  .day {
-    background-color: rgb(59, 150, 249);
-    color: #fff;
-  }
-  
-  .night {
-    background-color: rgb(20, 42, 95);
-    color: #fff;
   }
 
   header {
@@ -77,9 +67,15 @@
     grid-auto-rows: 250px;
     transition: transform .21s ease-out;
     transform: translateX(0);
+    height: auto;
+    overflow: inherit;
+    opacity: 1;
 
     &.hide {
       transform: translateX(100%);
+      height: 100vh;
+      overflow: hidden;
+      opacity: .3;
     }
 
     @media(min-width: 400px){
@@ -224,9 +220,104 @@
   .single-weather {
     transition: transform .21s ease-out;
     transform: translateX(-100%);
+    padding-top: 81px;
+    background-color: #ccc;
+    min-height: 100vh;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    opacity: .3;
 
     &.show {
       transform: translateX(0);
+      height: auto;
+      overflow: inherit;
+      opacity: 1;
     }
+  }
+  
+  .current-weather {
+    border-bottom: 1px solid rgba(255, 255, 255 , .7);
+
+    .container {
+      margin: 30px 0;
+      min-height: 366px;
+      position: relative;
+      display: flex;
+      color: #fff;
+    }
+
+    span {
+      display: block;
+    }
+
+    .single-info {
+      padding-top: 30px;
+      flex: 1;
+      z-index: 1;
+    }
+
+    .single-city {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .single-temp {
+      margin-top: 40px;
+      font-size: 80px;
+      font-weight: 600;
+    }
+
+    .high-low-temp {
+      display: flex;
+      gap: 16px;
+
+      .high, .low {
+        display: flex;
+
+        span {
+          margin: 0 0 0 8px;
+        }
+      }
+    }
+
+    .condition {
+      text-transform: capitalize;
+      font-size: 24px;
+      font-weight: 500;
+      margin: 80px 0 8px 0;
+    }
+
+    .feels-like {
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .icon {
+      height: 100%;
+      position: absolute;
+      right: -180px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 366px;
+        height: 366px;
+      }
+    }
+  }
+
+  .day {
+    background-color: rgb(59, 150, 249);
+    color: #fff;
+  }
+  
+  .night {
+    background-color: rgb(20, 42, 95);
+    color: #fff;
   }
 }

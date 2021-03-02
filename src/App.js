@@ -10,14 +10,14 @@ import Weather from './Components/Weather';
 
 function App() {
 
-  const {isModal} = useContext(Context);
+  const {isWeather, isModal} = useContext(Context);
 
   return (
     <div className="main">
       {isModal && <Modal/>}
       <Navigation/>
       <Grid/>
-      <Weather/>
+      {isWeather && <Weather/>}
     </div>
   );
 }
