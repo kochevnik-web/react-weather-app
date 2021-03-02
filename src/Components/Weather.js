@@ -2,6 +2,9 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import {Context} from '../context';
 
+import Hourly from './Hourly';
+import Weekly from './Weekly';
+
 export default function Weatcher() {
 
     const {APIkey, isWeather, nightOrDay} = useContext(Context);
@@ -11,7 +14,7 @@ export default function Weatcher() {
 
     useEffect(() => {
         if(isWeather){
-            axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${isWeather.coord.lat}&lon=${isWeather.coord.lon}&exclude=current,minutley,alerts&appid=${APIkey}`).then(res => {
+            axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${isWeather.coord.lat}&lon=${isWeather.coord.lon}&exclude=current,minutley,alerts&units=metric&appid=${APIkey}`).then(res => {
                 setSingleData(res.data);
             });
         }
@@ -24,8 +27,6 @@ export default function Weatcher() {
             setSingleClass('show')
         }, 1);
      }, [])
-
-    console.log(singleData);
 
     return (
         <div className={clx.join(' ')}>
@@ -56,6 +57,9 @@ export default function Weatcher() {
                     </div>
                 </div>
             </div>
+            {singleData && <Hourly data={singleData}/>}
+            {singleData && <Weekly data={singleData}/>}
+
         </div>
     )
 }
