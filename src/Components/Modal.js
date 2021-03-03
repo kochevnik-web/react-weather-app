@@ -9,7 +9,6 @@ export default function Modal() {
     const addCityName = () => {
         handlerAddCity(value);
         setValue('');
-        handlerModal();
     }
     return (
         <div className="modal" onClick={handlerModal}>

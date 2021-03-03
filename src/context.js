@@ -21,6 +21,10 @@ export default function ContextProvider({ children }) {
 
             const storage = JSON.parse(localStorage.getItem('cityList')) || [];
             localStorage.setItem('cityList', JSON.stringify([res.data,...storage]));
+
+            handlerModal();
+        }).catch((error) => {
+            alert(`City '${city}' dont found`);
         });
     }
 

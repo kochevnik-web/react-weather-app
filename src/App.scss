@@ -404,6 +404,28 @@
     }
   }
 
+  .additional-info {
+    padding: 30px 20px 10px;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 50%;
+      margin: 0 0 20px 0;
+
+      span:nth-child(1){
+        font-size: 12px;
+      }
+
+      span:nth-child(2){
+        font-weight: 600;
+      }
+    }
+  }
+
   .day {
     background-color: rgb(59, 150, 249);
     color: #fff;

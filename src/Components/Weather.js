@@ -4,6 +4,7 @@ import {Context} from '../context';
 
 import Hourly from './Hourly';
 import Weekly from './Weekly';
+import Info from './Info';
 
 export default function Weatcher() {
 
@@ -59,6 +60,7 @@ export default function Weatcher() {
             </div>
             {singleData && <Hourly data={singleData}/>}
             {singleData && <Weekly data={singleData}/>}
+            <Info data={isWeather}/>
 
         </div>
     )
